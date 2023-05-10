@@ -12,8 +12,7 @@ source:
 
 build:
   number: 0
-  script:
-    - {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   build:
@@ -23,7 +22,7 @@ requirements:
     - pip
     - python
     - setuptools
-    - setuptools-scm 6.0.1
+    - setuptools-scm 7.0.4
     - wheel
   run:
     - python
@@ -46,8 +45,8 @@ about:
   dev_url: https://codeberg.org/miurahr/pyppmd
   doc_url: https://codeberg.org/miurahr/pyppmd/src/branch/main/README.rst
   summary: PPMd compression/decompression library
-  license: BSD-3-Clause
-  license_family: BSD
+  license: LGPL-2.1-or-later
+  license_family: LGPL
   license_file: LICENSE
 
 extra:
