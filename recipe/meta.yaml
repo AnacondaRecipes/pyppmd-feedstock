@@ -1,18 +1,18 @@
 {% set name = "pyppmd" %}
-{% set version = "1.0.0" %}
-
+{% set version = "1.2.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 075c9bd297e3b0a87dd7aeabca7fee668218acbe69ecc1c6511064558de8840f
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: cc04af92f1d26831ec96963439dfb27c96467b5452b94436a6af696649a121fd
 
 build:
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  skip: true  # [py<39]
 
 requirements:
   build:
@@ -21,12 +21,13 @@ requirements:
   host:
     - pip
     - python
-    - setuptools
-    - setuptools-scm
-    - wheel
+    - setuptools >=59
+    - setuptools-scm >=6.4.2
   run:
     - python
     - importlib_metadata  # [py<38]
+  run_constrained:
+    - mypy >=1.10.0
 
 test:
   imports:
