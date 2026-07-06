@@ -27,8 +27,6 @@ requirements:
     - toml
   run:
     - python
-  run_constrained:
-    - mypy >=1.10.0
 
 test:
   source_files:
